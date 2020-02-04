@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
+
+    $app = new Symfony\Component\Console\Application('Bitrix Generators', '1.0.0');
+    $app->add(new QQ\Bitrix\Generators\Console\CreateModuleCommand);
+    $app->add(new QQ\Bitrix\Generators\Console\CreateComponentCommand);
+
+    $app->run();
+}

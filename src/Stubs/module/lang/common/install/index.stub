@@ -1,0 +1,7 @@
+$MESS['{{ $upperCaseName }}_MODULE_NAME'] = 'Название модуля';
+$MESS['{{ $upperCaseName }}_MODULE_DESCRIPTION'] = 'Описание модуля';
+$MESS['{{ $upperCaseName }}_PARTNER_NAME'] = 'Партнер';
+$MESS['{{ $upperCaseName }}_PARTNER_URI'] = 'https://partner-site.ru';
+$MESS['{{ $upperCaseName }}_MODULE_ACCESS_DENIED'] = 'Доступ закрыт';
+$MESS['{{ $upperCaseName }}_MODULE_ACCESS_OPENED'] = 'Просмотр всех данных модуля';
+$MESS['{{ $upperCaseName }}_MODULE_ACCESS_FULL'] = 'Полный доступ';

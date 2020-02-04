@@ -1,0 +1,17 @@
+use Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
+
+$arComponentDescription = [
+'NAME' => Loc::getMessage('{{ $upperCaseName }}_COMPONENT_NAME'),
+'DESCRIPTION' => Loc::getMessage('{{ $upperCaseName }}_COMPONENT_DESCRIPTION'),
+'PATH' => [
+'ID' => 'content',
+'CHILD' => [
+'ID' => '{{ $vendorCode }}',
+'NAME' => 'Партнер'
+]
+],
+'CACHE_PATH' => 'Y',
+'COMPLEX' => 'N'
+];

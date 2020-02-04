@@ -1,0 +1,7 @@
+class {{ $camelCaseName }}Component extends \CBitrixComponent
+{
+public function executeComponent()
+{
+$this->includeComponentTemplate();
+}
+}

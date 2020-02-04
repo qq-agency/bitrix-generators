@@ -1,0 +1,97 @@
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ModuleManager;
+
+Loc::loadMessages(__FILE__);
+
+class {{ $snackCaseName }} extends CModule
+{
+var $MODULE_ID = '{{ $defaultName }}';
+var $MODULE_VERSION;
+var $MODULE_VERSION_DATE;
+var $MODULE_NAME;
+var $MODULE_DESCRIPTION;
+var $PARTNER_NAME;
+var $PARTNER_URI;
+var $MODULE_GROUP_RIGHTS = 'Y';
+
+public function __construct()
+{
+$arModuleVersion = [];
+include __DIR__.'/version.php';
+if (is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion)) {
+$this->MODULE_VERSION = $arModuleVersion['VERSION'];
+$this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
+}
+
+$this->MODULE_NAME = Loc::getMessage('{{ $upperCaseName }}_MODULE_NAME');
+$this->MODULE_DESCRIPTION = Loc::getMessage('{{ $upperCaseName }}_MODULE_DESCRIPTION');
+$this->PARTNER_NAME = Loc::getMessage('{{ $upperCaseName }}_PARTNER_NAME');
+$this->PARTNER_URI = Loc::getMessage('{{ $upperCaseName }}_PARTNER_URI');
+}
+
+public function InstallFiles()
+{
+}
+
+public function InstallDB()
+{
+}
+
+public function InstallEvents()
+{
+}
+
+public function InstallTasks()
+{
+}
+
+public function UnInstallTasks()
+{
+}
+
+public function UnInstallEvents()
+{
+}
+
+public function UnInstallDB()
+{
+}
+
+public function UnInstallFiles()
+{
+}
+
+public function GetModuleRightList()
+{
+return [
+'reference_id' => ['D', 'R', 'W'],
+'reference' => [
+Loc::getMessage('{{ $upperCaseName }}_MODULE_ACCESS_DENIED'),
+Loc::getMessage('{{ $upperCaseName }}_MODULE_ACCESS_OPENED'),
+Loc::getMessage('{{ $upperCaseName }}_MODULE_ACCESS_FULL'),
+],
+];
+}
+
+public function DoInstall()
+{
+$this->InstallFiles();
+$this->InstallDB();
+$this->InstallEvents();
+$this->InstallTasks();
+
+ModuleManager::registerModule($this->MODULE_ID);
+
+return true;
+}
+
+public function DoUninstall()
+{
+$this->UnInstallTasks();
+$this->UnInstallEvents();
+$this->UnInstallDB();
+$this->UnInstallFiles();
+
+ModuleManager::unRegisterModule($this->MODULE_ID);
+}
+}

@@ -1,0 +1,2 @@
+$MESS['{{ $upperCaseName }}_COMPONENT_NAME'] = 'Название компонента';
+$MESS['{{ $upperCaseName }}_COMPONENT_DESCRIPTION'] = 'Описание компонента';

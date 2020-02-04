@@ -1,0 +1,3 @@
+$MESS['{{ $upperCaseName }}_GROUP_SETTINGS'] = 'Настройки';
+$MESS['{{ $upperCaseName }}_PARAMETERS_PARAMETER_1'] = 'Параметр 1';
+$MESS['{{ $upperCaseName }}_PARAMETERS_PARAMETER_1_DEFAULT'] = 'Значение';
