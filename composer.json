@@ -1,6 +1,7 @@
 {
   "name": "qq-agency/bitrix-generators",
   "description": "Bitrix Generators",
+  "version": "1.0.0",
   "keywords": [
     "bitrix",
     "1c-bitrix",
@@ -11,11 +12,13 @@
   "authors": [
     {
       "name": "Sergey Panteleev",
-      "email": "sergey@php.net"
+      "email": "sergey@php.net",
+      "homepage": "https://s-panteleev.ru"
     },
     {
       "name": "QQ",
-      "email": "info@qq-agency.ru"
+      "email": "info@qq-agency.ru",
+      "homepage": "https://qq-agency.ru"
     }
   ],
   "minimum-stability": "dev",
@@ -34,5 +37,8 @@
     "psr-4": {
       "QQ\\Bitrix\\Generators\\": "src/"
     }
+  },
+  "support": {
+    "issues": "https://github.com/QQ-Agency/bitrix-generators/issues"
   }
 }
