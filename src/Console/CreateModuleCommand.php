@@ -29,7 +29,7 @@ class CreateModuleCommand extends Command
                 'path',
                 InputArgument::OPTIONAL,
                 'Path to put module. Default is current directory',
-                __DIR__
+                getcwd()
             )
             ->addOption(
                 'lang',
