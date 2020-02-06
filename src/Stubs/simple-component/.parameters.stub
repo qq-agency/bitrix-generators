@@ -3,19 +3,19 @@ use Bitrix\Main\Localization\Loc;
 Loc::loadMessages(__FILE__);
 
 $arComponentParameters = [
-'GROUPS' => [
-'SETTINGS' => [
-'NAME' => Loc::getMessage('{{ $upperCaseName }}_GROUP_SETTINGS')
-],
-],
-'PARAMETERS' => [
-'PARAMETER_1' => [
-'PARENT' => 'SETTINGS',
-'NAME' => Loc::getMessage('{{ $upperCaseName }}_PARAMETERS_PARAMETER_1'),
-'TYPE' => 'STRING',
-'MULTIPLE' => 'N',
-'DEFAULT' => Loc::getMessage('{{ $upperCaseName }}_PARAMETERS_PARAMETER_1_DEFAULT'),
-],
-'CACHE_TIME' => [],
-]
+    'GROUPS' => [
+        'SETTINGS' => [
+            'NAME' => Loc::getMessage('{{ $upperCaseName }}_GROUP_SETTINGS')
+        ],
+    ],
+    'PARAMETERS' => [
+        'PARAMETER_1' => [
+            'PARENT' => 'SETTINGS',
+            'NAME' => Loc::getMessage('{{ $upperCaseName }}_PARAMETERS_PARAMETER_1'),
+            'TYPE' => 'STRING',
+            'MULTIPLE' => 'N',
+            'DEFAULT' => Loc::getMessage('{{ $upperCaseName }}_PARAMETERS_PARAMETER_1_DEFAULT'),
+        ],
+        'CACHE_TIME' => [],
+    ]
 ];
