@@ -2,7 +2,7 @@
 
 namespace QQ\Bitrix\Generators\Entity;
 
-use Symfony\Component\Filesystem\Filesystem;
+use QQ\Bitrix\Generators\Structure;
 
 class SimpleComponent
 {
@@ -59,40 +59,23 @@ class SimpleComponent
             $map['/lang/'.$lang.'/.parameters.php'] = '/lang/common/.parameters.stub';
         }
 
-        $fileSystem = new FileSystem();
-
-        foreach ($map as $destination => $origin) {
-            $filesystem = new Filesystem();
-            if (is_dir($sourceDirectory.$origin)) {
-                $fileSystem->mkdir($target.$destination);
-            } elseif ($filesystem->exists($sourceDirectory.$origin)) {
-                $filesystem->dumpFile(
-                    $target.$destination,
-                    $this->prepareStub($sourceDirectory.$origin)
-                );
-            }
-        }
-    }
-
-    private function prepareStub($fileName)
-    {
-        $content = str_replace(
-            [
-                '{{ $vendorCode }}',
-                '{{ $defaultName }}',
-                '{{ $camelCaseName }}',
-                '{{ $upperCaseName }}',
-            ],
-            [
-                $this->getVendorCode(),
-                $this->getDefaultName(),
-                $this->getCamelCaseName(),
-                $this->getUpperCaseName(),
-            ],
-            file_get_contents($fileName)
-        );
-
-        return '<?php'.PHP_EOL.PHP_EOL.$content;
+        $structure = new Structure($sourceDirectory, $target);
+        $structure
+            ->replace(
+                [
+                    '{{ $vendorCode }}',
+                    '{{ $defaultName }}',
+                    '{{ $camelCaseName }}',
+                    '{{ $upperCaseName }}',
+                ],
+                [
+                    $this->getVendorCode(),
+                    $this->getDefaultName(),
+                    $this->getCamelCaseName(),
+                    $this->getUpperCaseName(),
+                ]
+            )
+            ->copy($map);
     }
 
     public function getVendorCode()

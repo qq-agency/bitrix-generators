@@ -2,7 +2,7 @@
 
 namespace QQ\Bitrix\Generators\Entity;
 
-use Symfony\Component\Filesystem\Filesystem;
+use QQ\Bitrix\Generators\Structure;
 
 class Module
 {
@@ -42,40 +42,23 @@ class Module
             $map['/lang/'.$lang.'/install/index.php'] = '/lang/common/install/index.stub';
         }
 
-        $fileSystem = new FileSystem();
-
-        foreach ($map as $destination => $origin) {
-            $filesystem = new Filesystem();
-            if (is_dir($sourceDirectory.$origin)) {
-                $fileSystem->mkdir($target.$destination);
-            } elseif ($filesystem->exists($sourceDirectory.$origin)) {
-                $filesystem->dumpFile(
-                    $target.$destination,
-                    $this->prepareStub($sourceDirectory.$origin)
-                );
-            }
-        }
-    }
-
-    private function prepareStub($fileName)
-    {
-        $content = str_replace(
-            [
-                '{{ $defaultName }}',
-                '{{ $upperCaseName }}',
-                '{{ $snackCaseName }}',
-                '{{ $currentDate }}',
-            ],
-            [
-                $this->getDefaultName(),
-                $this->getUpperCaseName(),
-                $this->getSnackCaseName(),
-                date('Y-m-d H:i:s')
-            ],
-            file_get_contents($fileName)
-        );
-
-        return '<?php'.PHP_EOL.PHP_EOL.$content;
+        $structure = new Structure($sourceDirectory, $target);
+        $structure
+            ->replace(
+                [
+                    '{{ $defaultName }}',
+                    '{{ $upperCaseName }}',
+                    '{{ $snackCaseName }}',
+                    '{{ $currentDate }}',
+                ],
+                [
+                    $this->getDefaultName(),
+                    $this->getUpperCaseName(),
+                    $this->getSnackCaseName(),
+                    date('Y-m-d H:i:s')
+                ]
+            )
+            ->copy($map);
     }
 
     public function getDefaultName()
