@@ -29,10 +29,12 @@ class SimpleComponent
         $componentName = explode('.', $componentName);
 
         $this->vendorCode = $componentName[0];
-        $this->defaultName = $componentName[1];
+        unset($componentName[0]);
 
-        $this->camelCaseName = ucfirst($this->vendorCode).ucfirst($this->defaultName);
-        $this->upperCaseName = mb_strtoupper($this->vendorCode.'_'.$this->defaultName);
+        $this->defaultName = implode('.', $componentName);
+
+        $this->camelCaseName = str_replace('.', '', ucfirst($this->vendorCode).ucwords($this->defaultName, '.'));
+        $this->upperCaseName = str_replace('.', '_', mb_strtoupper($this->vendorCode.'_'.$this->defaultName));
 
         $this->lang = $lang;
     }

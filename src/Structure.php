@@ -29,6 +29,9 @@ class Structure
             throw new \RuntimeException('Search count doesn\'t match to replace count');
         }
 
+        $this->search = $search;
+        $this->replace = $replace;
+
         return $this;
     }
 
