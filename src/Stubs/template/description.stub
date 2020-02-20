@@ -1,0 +1,6 @@
+$arTemplate = [
+    'NAME' => '{{ $defaultName }}',
+    'DESCRIPTION' => '',
+    'SORT' => '',
+    'TYPE' => '',
+];

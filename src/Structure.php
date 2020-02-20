@@ -54,12 +54,18 @@ class Structure
 
     protected function prepare($fileName)
     {
+        $file = pathinfo($fileName);
+
         $content = str_replace(
             $this->search,
             $this->replace,
             file_get_contents($fileName)
         );
 
-        return '<?php'.PHP_EOL.PHP_EOL.$content;
+        if ($file['extension'] === 'stub') {
+            $content = '<?php'.PHP_EOL.PHP_EOL.$content;
+        }
+
+        return $content;
     }
 }
