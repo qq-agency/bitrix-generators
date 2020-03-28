@@ -19,7 +19,7 @@ Command generates module in ``/path/to/modules/folder/vendor.module/``
 ## Bitrix simple component
 
 ```bash
-./bin/bitrix create:componet vendor.component /path/to/components/folder --lang=ru --lang=en --lang=de
+./bin/bitrix-cli create:componet vendor.component /path/to/components/folder --lang=ru --lang=en --lang=de
 ```
 
 | Option | Required | Default | Description |
@@ -33,7 +33,7 @@ Command generates module in ``/path/to/components/folder/vendor/component/``
 ## Bitrix template
 
 ```bash
-./bin/bitrix create:template general /path/to/templates/folder --lang=ru --lang=en --lang=de
+./bin/bitrix-cli create:template general /path/to/templates/folder --lang=ru --lang=en --lang=de
 ```
 
 | Option | Required | Default | Description |
